@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+    username: RM563073
+    password: 260796
+    driver-class-name: oracle.jdbc.OracleDriver
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
