@@ -1,6 +1,34 @@
+version: '3.8'
 services:
-  api:
+  app:
     build: .
-    container_name: recicla-facil-api
     ports:
       - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/reciclafacil
+      - SPRING_DATASOURCE_USERNAME=usuario_esg
+      - SPRING_DATASOURCE_PASSWORD=senha_esg
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - db
+    networks:
+      - recicla-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=usuario_esg
+      - POSTGRES_PASSWORD=senha_esg
+      - POSTGRES_DB=reciclafacil
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - recicla-network
+
+volumes:
+  postgres_data:
+
+networks:
+  recicla-network:
