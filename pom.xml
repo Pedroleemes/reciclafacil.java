@@ -76,6 +76,43 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- BDD com Gherkin -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.34.9</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- Integração Cucumber com o contexto do Spring -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-spring</artifactId>
+    <version>7.34.9</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- Execução dos cenários pelo JUnit Platform -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit-platform-engine</artifactId>
+    <version>7.34.9</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- Descoberta e execução da suíte de testes -->
+<dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-suite</artifactId>
+    <scope>test</scope>
+</dependency>
+
+<!-- Banco H2 exclusivo para testes -->
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>test</scope>
+</dependency>
 	</dependencies>
 
 	<build>
