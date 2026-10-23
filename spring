@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: recicla-facil-api
+
+  datasource:
+    datasource:
+      url: jdbc:oracle:thin:@//db:1521/XEPDB1
+      username: RM563073
+      password: 260796
+      driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: validate # Flyway gerencia o banco
+    show-sql: true
+
+  flyway:
+    baseline-on-migrate: true
