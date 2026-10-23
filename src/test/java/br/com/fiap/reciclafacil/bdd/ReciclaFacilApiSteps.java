@@ -46,7 +46,7 @@ public class ReciclaFacilApiSteps {
         ponto.setNome("Ponto de Teste BDD");
         ponto.setEndereco("Rua dos Testes, 100");
         ponto.setTipoMaterial("PLASTICO");
-        ponto.setCapacidademaximaKg(50.0);
+        ponto.setCapacidademaximaKg(500.0);
         ponto.setCapacidadeAtualKg(0.0);
 
         pontoId = pontoRepository.saveAndFlush(ponto).getId();
@@ -61,7 +61,6 @@ public class ReciclaFacilApiSteps {
     public void existePontoCadastrado() {
         assertNotNull(pontoId);
     }
-
     @When("envio credenciais válidas para o login")
     public void loginValido() {
         response = given()
