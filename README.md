@@ -1,75 +1,17 @@
-# ReciclaFácil — Testes Automatizados de API
+## Integração contínua com GitHub Actions
 
-## Objetivo
+O workflow está localizado em `.github/workflows/ci-cd.yml`.
 
-Validar as APIs do ReciclaFácil utilizando BDD, Gherkin,
-Cucumber, Rest Assured e JSON Schema.
+A execução ocorre automaticamente em atualizações da branch `main`
+e em Pull Requests direcionados à branch `main`. Também pode ser
+iniciada manualmente pela aba Actions do GitHub.
 
-## Tecnologias
+O pipeline possui duas etapas:
 
-- Java
-- Spring Boot
-- Maven
-- JUnit
-- Cucumber e Gherkin
-- Rest Assured
-- JSON Schema
-- H2 para o ambiente de testes
-- GitHub Actions para integração contínua
+1. Executa os testes automatizados com Maven, incluindo os cenários
+   BDD escritos em Gherkin.
+2. Se os testes passarem, constrói a imagem Docker para validar
+   a configuração do container.
 
-## Requisitos
-
-- JDK compatível com o projeto
-- VS Code
-- Maven Wrapper do repositório
-
-O projeto declara Java 17 no pom.xml. O JDK 21 também
-pode executar esse projeto, desde que as configurações
-de compilação sejam mantidas consistentes.
-
-## Executar todos os testes
-
-No terminal PowerShell, na raiz do projeto:
-
-    .\mvnw.cmd clean test
-
-## Executar somente os cenários BDD
-
-    .\mvnw.cmd -Dtest=RunCucumberTest test
-
-## Relatórios
-
-Após a execução, consultar:
-
-- target/cucumber-report.html
-- target/cucumber-report.json
-- target/surefire-reports/
-
-## Cenários BDD
-
-1. Login válido.
-2. Login inválido.
-3. Listagem de pontos de coleta.
-4. Registro de descarte válido.
-5. Rejeição de peso inválido.
-6. Rejeição de ponto inexistente.
-7. Atualização de agendamento.
-8. Cancelamento de agendamento.
-
-## Contratos JSON
-
-- login-schema.json
-- pontos-coleta-schema.json
-- descarte-validation-schema.json
-
-## Integração contínua
-
-O workflow localizado em
-.github/workflows/maven.yml executa os testes Maven
-nos eventos configurados no GitHub Actions.
-
-## Banco de testes
-
-A configuração de testes utiliza H2 em memória.
-Ela não deve ser confundida com a configuração Oracle
-utilizada pela aplicação fora dos testes.
+O processo não depende de credenciais do Azure e não publica
+a imagem em um registro externo nem realiza implantação.
